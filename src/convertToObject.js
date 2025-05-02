@@ -9,10 +9,12 @@ function convertToObject(sourceString) {
   const result = {};
 
   sourceString.split(';').forEach((dec) => {
-    if (dec.trim()) {
+    if (dec.includes(':')) {
       const [key, value] = dec.split(':');
 
-      result[key.trim()] = value.trim();
+      if (key && value) {
+        result[key.trim()] = value.trim();
+      }
     }
   });
 
